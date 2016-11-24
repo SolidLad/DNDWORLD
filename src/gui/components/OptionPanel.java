@@ -1,10 +1,7 @@
 package gui.components;
 
-import io.Question;
-
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /** this class handles the input section of the interface */
@@ -38,11 +35,6 @@ public class OptionPanel extends JPanel{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         //test string
-        try {
-            drawQuestion(new Question(g2d.getFontMetrics()).readQuestion(1), g2d);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     public void drawTextAtPoint(Graphics2D g2d, String str, Point p){
         ArrayList<String> list = wrapString(str, g2d.getFontMetrics());
@@ -94,11 +86,5 @@ public class OptionPanel extends JPanel{
         }
         else strs.add(temp);
         return strs;
-    }
-    public void drawQuestion(Question q, Graphics2D g2d){
-        for (String key : q.getTextLocations().keySet()){
-            // FIXME: 11/24/2016 passes null to key. Problem with question writing?
-            drawTextAtPoint(g2d, key ,q.getTextLocations().get(key));
-        }
     }
 }
