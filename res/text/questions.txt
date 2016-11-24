@@ -1,0 +1,13 @@
+#This file contains all of the questions.
+#Key:
+#Q___ = question indicator. There can be only one per question.
+#E___ = question end indicator. There can be only one per question.
+#TEXT = text indicator. There can be more than one per question.
+#TFLD = creates a field.
+#RBTX = radio button text. Must be followed by a radio button.
+#RBTN = creates a radio button. Must follow radio button text.
+#Format questions like so:
+#Qustion number {TEXT test text, TFLD }
+#Notice that there is a space after every keyword and a comma with no space afterwords separating components.
+
+Q001 {TEXT What size would you like your world to be?,TEXT Width in miles,TFLD ,TEXT Height in miles,TFLD } E001
