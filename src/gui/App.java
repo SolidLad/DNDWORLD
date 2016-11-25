@@ -2,6 +2,8 @@ package gui;
 
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -25,6 +27,11 @@ public class App extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25,25,25,25));
 
+        GridPane input = new GridPane();
+        input.setHgap(10);
+        input.setVgap(10);
+        input.setPadding(new Insets(25,25,25,25));
+
         ProgressBar pb = new ProgressBar(0);
         pb.setProgress(0.04);
         pb.setPrefWidth(600.0);
@@ -36,8 +43,11 @@ public class App extends Application {
 
         TextField textField = new TextField("input goes here");
 
-        Button button = new Button("Submit");
-        button.setPrefWidth(350);
+        Button submit = new Button("Submit");
+        submit.setPrefWidth(70);
+
+        Button back = new Button("Back");
+        back.setPrefWidth(70);
 
         Canvas canvas = new Canvas(600,450);
 
@@ -50,8 +60,10 @@ public class App extends Application {
         grid.add(label, 0, 0);
         grid.add(pb,2,0);
         grid.add(canvas, 2,1);
-        grid.add(button, 0, 4);
-        grid.add(textField,0,2);
+        input.add(textField,0,0);
+        input.add(submit,0,1);
+        input.add(back,1,1);
+        grid.add(input, 0,2);
         grid.add(textArea, 0, 1);
 
         Scene scene = new Scene(grid, 1000,600);
