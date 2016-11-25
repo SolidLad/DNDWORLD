@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -30,7 +31,7 @@ public class App extends Application {
         GridPane input = new GridPane();
         input.setHgap(10);
         input.setVgap(10);
-        input.setPadding(new Insets(25,25,25,25));
+        input.setPadding(new Insets(0,0,0,0));
 
         ProgressBar pb = new ProgressBar(0);
         pb.setProgress(0.04);
@@ -60,9 +61,11 @@ public class App extends Application {
         grid.add(label, 0, 0);
         grid.add(pb,2,0);
         grid.add(canvas, 2,1);
-        input.add(textField,0,0);
+
+        input.add(textField,0,0,2,1);
         input.add(submit,0,1);
         input.add(back,1,1);
+
         grid.add(input, 0,2);
         grid.add(textArea, 0, 1);
 
