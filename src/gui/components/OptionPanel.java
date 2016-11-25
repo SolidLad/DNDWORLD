@@ -1,12 +1,19 @@
 package gui.components;
 
+import gui.drawables.Drawable;
+import gui.drawables.HexGrid;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /** this class handles the input section of the interface */
 public class OptionPanel extends JPanel{
-    //a JTextArea to be referenced later.
+    private Drawable hexGrid = null;
+    private JTextField test = new JTextField();
+    private JButton testButton = new JButton("Submit");
 
     public OptionPanel(){
         this(1333,1000);
@@ -28,13 +35,18 @@ public class OptionPanel extends JPanel{
         //and set the preferred size;
         setPreferredSize(new Dimension(width,height));
 
+        //testing mumbo jumbo
+        testButton.addActionListener(e -> {
+            hexGrid = new HexGrid(getWidth(),getHeight(),400,200, 12);
+        });
+        add(test);
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        //test string
     }
     public void drawTextAtPoint(Graphics2D g2d, String str, Point p){
         ArrayList<String> list = wrapString(str, g2d.getFontMetrics());
