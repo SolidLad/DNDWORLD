@@ -6,8 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -44,19 +43,33 @@ public class App extends Application {
         ProgressBar pb = new ProgressBar(0);
         pb.setProgress(0.04);
         pb.setPrefWidth(600.0);
+
         Label label = new Label("Progress . . .");
 
-        Canvas canvas = new Canvas(600,600);
+        TextArea textArea = new TextArea("question here");
+        textArea.setFocusTraversable(false);
+
+        TextField textField = new TextField("input goes here");
+
+        Button button = new Button("Submit");
+        button.setPrefWidth(350);
+
+        Canvas canvas = new Canvas(600,450);
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
+
         gc.setFill(Color.BROWN);
         gc.fillRect(0.0,0.0,600.0,600.0);
-        gc.strokeText("map goes here idk where input goes",150.0,150.0);
+        gc.strokeText("map goes here",300.0,300.0);
 
-        grid.add(canvas, 2,1);
         grid.add(label, 0, 0);
         grid.add(pb,2,0);
+        grid.add(canvas, 2,1);
+        grid.add(button, 0, 4);
+        grid.add(textField,0,2);
+        grid.add(textArea, 0, 1);
 
-        Scene scene = new Scene(grid, 800,600);
+        Scene scene = new Scene(grid, 1000,600);
         ps.setScene(scene);
 
         ps.show();
