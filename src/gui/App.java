@@ -1,15 +1,13 @@
 package gui;
 
 
+import generation.TileGenerator;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -57,6 +55,16 @@ public class App extends Application {
         gc.setFill(Color.BROWN);
         gc.fillRect(0.0,0.0,600.0,600.0);
         gc.strokeText("map goes here",300.0,300.0);
+        gc.setStroke(Color.DARKGRAY);
+        gc.strokeRect(1,1,canvas.getWidth()-2,canvas.getHeight()-2);
+        gc.setStroke(Color.BLACK);
+        gc.strokeRect(0,0,canvas.getWidth(),canvas.getHeight());
+
+
+//        TileGenerator tg = new TileGenerator(TileGenerator.makeTiles(0,0,(int)canvas.getWidth(),(int)canvas.getHeight(),12));
+//        tg.draw(gc);
+        TileGenerator tg = new TileGenerator(TileGenerator.makeHexes(0,0,(int)canvas.getWidth(),(int)canvas.getHeight(),12));
+        tg.draw(gc);
 
         grid.add(label, 0, 0);
         grid.add(pb,2,0);
@@ -70,6 +78,7 @@ public class App extends Application {
         grid.add(textArea, 0, 1);
 
         Scene scene = new Scene(grid, 1000,600);
+
         ps.setScene(scene);
 
         ps.show();
