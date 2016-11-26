@@ -44,11 +44,12 @@ public class TileGenerator {
         hexHeight = height/scale;
         hexWidth = width/scale;
         ArrayList<Hex> hexes = new ArrayList<>();
-        for (int i = 0; i < hexWidth; i++) {
-            for (int j = 0; j < hexHeight; j++) {
-                hexes.add(new Hex(x+scale*i,y+scale*j,scale));
-            }
-        }
+        hexes.addAll(Hex.getHoneycomb(new Hex(100,100,12)));
+//        for (int i = 0; i < hexWidth; i++) {
+//            for (int j = 0; j < hexHeight; j++) {
+//
+//            }
+//        }
         return hexes.toArray(new Hex[hexes.size()]);
     }
 }

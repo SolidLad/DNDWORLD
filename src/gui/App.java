@@ -1,6 +1,7 @@
 package gui;
 
 
+import generation.Hex;
 import generation.TileGenerator;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -63,8 +64,9 @@ public class App extends Application {
 
 //        TileGenerator tg = new TileGenerator(TileGenerator.makeTiles(0,0,(int)canvas.getWidth(),(int)canvas.getHeight(),12));
 //        tg.draw(gc);
-        TileGenerator tg = new TileGenerator(TileGenerator.makeHexes(0,0,(int)canvas.getWidth(),(int)canvas.getHeight(),12));
-        tg.draw(gc);
+
+//        TileGenerator tg = new TileGenerator(TileGenerator.makeHexes(0,0,(int)canvas.getWidth(),(int)canvas.getHeight(),12));
+//        tg.draw(gc);
 
         grid.add(label, 0, 0);
         grid.add(pb,2,0);
