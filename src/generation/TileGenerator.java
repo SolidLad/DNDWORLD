@@ -41,15 +41,19 @@ public class TileGenerator {
     }
     public static Tile[] makeHexes(int x, int y, int width, int height, int scale){
         int hexWidth, hexHeight;
-        hexHeight = height/scale;
+        double rootThree, yHalf;
+        rootThree  = Math.sqrt(3);
+        yHalf = rootThree * scale/2;
+        hexHeight = (int)(height/(yHalf*2));
         hexWidth = width/scale;
         ArrayList<Hex> hexes = new ArrayList<>();
-        hexes.addAll(Hex.getHoneycomb(new Hex(100,100,12)));
-//        for (int i = 0; i < hexWidth; i++) {
-//            for (int j = 0; j < hexHeight; j++) {
-//
-//            }
-//        }
+        double honeyWidth = scale*3.5, honeyHeight = yHalf*4;
+        for (int i = 0; i < hexWidth+1; i++) {
+            for (int j = 0; j < hexHeight+1; j++) {
+                // FIXME: 11/27/2016 This doesnt work lol
+                hexes.addAll(Hex.getHoneycomb(new Hex(x + honeyWidth*i, y + honeyHeight*j, scale)));
+            }
+        }
         return hexes.toArray(new Hex[hexes.size()]);
     }
 }
