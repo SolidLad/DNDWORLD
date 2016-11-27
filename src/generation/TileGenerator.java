@@ -50,7 +50,7 @@ public class TileGenerator {
         double honeyWidth = scale*3.5, honeyHeight = yHalf*4;
         for (int i = 0; i < hexWidth+1; i++) {
             for (int j = 0; j < hexHeight+1; j++) {
-                // FIXME: 11/27/2016 This doesnt work lol
+                // FIXME: 11/27/2016 This doesnt work lol.
                 hexes.addAll(Hex.getHoneycomb(new Hex(x + honeyWidth*i, y + honeyHeight*j, scale)));
             }
         }
