@@ -44,14 +44,17 @@ public class TileGenerator {
         double rootThree, yHalf;
         rootThree  = Math.sqrt(3);
         yHalf = rootThree * scale/2;
-        hexHeight = (int)(height/(yHalf*2));
-        hexWidth = width/scale;
         ArrayList<Hex> hexes = new ArrayList<>();
-        double honeyWidth = scale*3.5, honeyHeight = yHalf*4;
-        for (int i = 0; i < hexWidth+1; i++) {
-            for (int j = 0; j < hexHeight+1; j++) {
-                // FIXME: 11/27/2016 This doesnt work lol.
-                hexes.addAll(Hex.getHoneycomb(new Hex(x + honeyWidth*i, y + honeyHeight*j, scale)));
+        double combWidth = scale*3.5 + scale, combHeight = yHalf*4;
+        hexWidth =(int)(width / combWidth)+1;
+        hexHeight =(int)(height / combHeight)+1;
+        for (int i = 0; i < hexWidth; i++) {
+            for (int j = 0; j < hexHeight; j++) {
+                if (i%2==0)
+                    hexes.addAll(Hex.getHoneycomb(new Hex(x + combWidth*i, y + combHeight*j, scale)));
+                else hexes.addAll(Hex.getHoneycomb(new Hex(x + combWidth*i, y + yHalf + combHeight*j, scale)));
+
+
             }
         }
         return hexes.toArray(new Hex[hexes.size()]);
